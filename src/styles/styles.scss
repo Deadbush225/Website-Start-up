@@ -1,22 +1,26 @@
+@use "colors" as c;
+@use "helper";
+@use "content-tools";
+@use "custom-gantt";
+
+@use "kanban";
+@use "bootstrap-override";
+
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Sen:wght@400;700;800&display=swap");
+
+@import url('https://cdn-uicons.flaticon.com/2.2.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+html * {
+    font-family: Sen, sans-serif;
+}
+
 body {
     padding: 0;
     margin: 0;
-    background-color: #14151f;
-    color: rgb(0, 0, 0);
-}
-
-
-.canvas-outer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-
-    canvas {
-        max-width: 100%;
-        max-height: 100%;
-        border: 1px white solid;
-    }
+    background-color: c.$background;
+    color: c.$foreground !important;
+    overflow: visible
 }
 
 .push {
@@ -30,7 +34,6 @@ body {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
 }
 
 .center {
@@ -38,7 +41,103 @@ body {
     align-items: center;
     justify-content: center;
 
-    .push {
-        display: inline-block;
+}
+
+.save {
+    display: flex;
+    justify-content: center;
+    width: 48px;
+    aspect-ratio: 1 / 1;
+    /* height: 1em; */
+    background: #49c155;
+    border-radius: 100%;
+    opacity: 0.9;
+    position: fixed;
+    top: 21px;
+    right: 72px;
+    cursor: pointer;
+    font-size: 2em;
+    align-items: flex-end;
+
+    i {
+        // width: 100%;
+        display: block;
+        color: white;
+        height: 42px
     }
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nav-bar ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.e_navbar {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 1em;
+    padding: 0;
+    overflow: hidden;
+    background-color: c.$secondary-background;
+}
+
+.e_navitems {
+    float: left;
+
+    a {
+        display: block;
+        // color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    color: #333338;
+
+
+    // a:hover:not(.active) {
+    //     // background-color: #111;
+    //     background-color: #04AA6D;
+    // }
+
+    &.active {
+        background-color: c.$background;
+        box-shadow: #656565 0 0 20px 0px;
+        color: #14151f;
+        font-weight: 600;
+    }
+
+    // &:not(.active) {
+    // }
+}
+
+#gantt_here {
+    margin: 0 10px;
+}
+
+.contents {
+    margin: 1em 1em;
+}
+
+.grid-container {
+    margin-bottom: 1em;
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Text ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.grid-stack-item-content {
+    // overflow-y: hidden !important; //prevents the remove card icon
+    overflow-x: unset !important;
+    overflow-y: unset !important;
+    padding: 0 0.5em;
+
+    * {
+        text-wrap: balance;
+        hyphens: auto;
+    }
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0.4em 0;
 }

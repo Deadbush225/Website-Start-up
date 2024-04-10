@@ -3,15 +3,68 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
 
-		<script type="module" src="./index.ts"></script>
+		<!-- <script src="../node_modules/gridstack/dist/gridstack-all.js"></script>
+		<link
+			href="../node_modules/gridstack/dist/gridstack.min.css"
+			rel="stylesheet"
+		/> -->
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+		<title>Document</title>
 	</head>
 	<body>
-		<div class="canvas-outer"></div>
-		<div class="center">
-			<button class="push">PUSH</button>
+		<style type="text/css">
+			.grid-stack {
+				background: #fafad2;
+			}
+			.grid-stack-item-content {
+				background-color: #18bc9c;
+			}
+		</style>
+
+		<ul class="e_navbar">
+			<li class="e_navitems active" onclick="navClick('dashboard')">
+				<a id="dashboard">Dashboard</a>
+			</li>
+			<li class="e_navitems" onclick="navClick('submission')">
+				<a id="submission">Submission</a>
+			</li>
+			<li class="e_navitems" onclick="navClick('admin_console')">
+				<a id="admin_console">Admin Console</a>
+			</li>
+		</ul>
+		<div class="save">
+			<i class="fi fi-rr-floppy-disk-circle-arrow-right"></i>
+			<!-- <button id="push">Save</button> -->
 		</div>
-		<!-- <p>Test</p> -->
+		<div class="contents"></div>
 	</body>
+
+	<script src="./gantt/dhtmlxgantt.js"></script>
+	<link rel="stylesheet" href="./gantt/dhtmlxgantt.css" type="text/css" />
+	<link
+		rel="stylesheet"
+		href="./gantt/skins/dhtmlxgantt_broadway.css"
+		type="text/css"
+	/>
+	<!-- <script src="frappe-gantt.min.js"></script> -->
+	<!-- <script src="frappe-gantt.min.js"></script>
+		<link rel="stylesheet" href="frappe-gantt.css" /> -->
+
+	<script type="module" src="./index.ts"></script>
+	<script>
+		function navClick(btnID) {
+			$(".e_navitems").each((index, element) => {
+				$(element).toggleClass("active", false);
+			});
+			$("#" + btnID)
+				.parent()
+				.toggleClass("active", true);
+			let NavChanged = new Event("NavChanged");
+			NavChanged.pageName = btnID;
+
+			window.dispatchEvent(NavChanged);
+		}
+	</script>
 </html>

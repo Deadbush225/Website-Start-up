@@ -1,0 +1,25 @@
+.grid-stack-item-content {
+    border-radius: 0.5em;
+}
+
+.grid-layout {
+    display: flex;
+    // flex-wrap: nowrap;
+}
+
+.grid-container {
+    min-width: 25%;
+}
+
+// #
+
+.tc-delete-card {
+    width: 1.2em;
+    /* height: 1em; */
+    aspect-ratio: 1 / 1;
+    background: #818181;
+    position: absolute;
+    border-radius: 50%;
+    top: -0.4em;
+    right: -0.4em;
+}

@@ -1,0 +1,22 @@
+@use "colors" as c;
+
+.gantt_task_scale {
+    // background-color: inherit !important
+}
+
+.grid-stack-item-content {
+    background-color: c.$box-background !important;
+}
+
+.grid-stack {
+    background: inherit !important;
+}
+
+#gantt_here {
+    height: fit-content !important;
+    min-height: 30vh;
+}
+
+.gantt_grid_scale .gantt_grid_head_cell {
+    color: inherit !important;
+}
